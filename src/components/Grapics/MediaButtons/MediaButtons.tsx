@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-import "./MediaButtons.css";
 import Panel from "../../Panel/Panel";
 import Button from "../../Button/Button";
 

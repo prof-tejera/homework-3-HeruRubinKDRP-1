@@ -8,14 +8,13 @@ export const ButtonStyled = styled.button`
   transition: all 0.2s ease-in-out;
   border: none;
   color: black;
-  padding: 15px 32px;
+  padding: var(--step--6) var(--step--4);
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  
+  font-size: var(--step--3);
+  margin: 0;
+  cursor: pointer;  
   
   label {
     position: relative;

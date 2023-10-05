@@ -27,6 +27,10 @@ export default {
     description : 'select from predefined hover states so it can be consistent',
     control: 'radio',
     options: ['default-hover', 'expand-bg']
+  },type : {
+    description : 'select from predefined button types',
+    control: 'radio',
+    options: ['button', 'submit']
   }
 } as Meta;
 

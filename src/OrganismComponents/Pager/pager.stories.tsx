@@ -18,6 +18,6 @@ const Template = (args) => <Pager {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
-  totalPages : 10,
+  totalPages : 22,
 }
 

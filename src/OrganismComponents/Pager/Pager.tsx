@@ -1,34 +1,48 @@
-import React, { ReactElement } from "react";
+import React from "react";
 import Button from "../../components/Button/Button";
+import { PagerStyled } from "./pager.styled";
 
 
 export interface iPagerProps {
-  totalPages : number;
-  pageChangeFunction : (page : number) => void;
+  totalPages: number;
+  pageChangeFunction: (page: number) => void;
 }
-const Pager = (props : iPagerProps) => {
-  const getPageButtons = () => {
-    let pageButtons : ReactElement[] = [];
-    for(let i = 0; i < props.totalPages; i++){
-      if(i > 5 && i < props.totalPages -1 ) continue;
 
-      pageButtons.push(
-        <Button
-          active={true}
-          label={`${i+1}`}
-          onClick={() => props.pageChangeFunction(i+1)}
-        />
-      )
+const Pager = (props: iPagerProps) => {
+  const [currentPage, setCurrentPage] = React.useState<number>(1);
+  const getDisplayedPages = () => {
+    if (props.totalPages <= 5) {
+      // If there are 5 or fewer pages, show all of them
+      return Array.from({ length: props.totalPages }, (_, i) => i + 1);
+    } else if (currentPage <= 3) {
+      // If the current page is one of the first three, show the first five pages
+      return [1, 2, 3, 4, "...", props.totalPages];
+    } else if (currentPage >= props.totalPages - 2) {
+      // If the current page is one of the last three, show the last five pages
+      return [1, "...", props.totalPages - 3, props.totalPages - 2, props.totalPages - 1, props.totalPages];
+    } else {
+      // Otherwise, show the current page, two pages before it, and two pages after it
+      return [1, "...", currentPage - 1, currentPage, currentPage + 1, "...", props.totalPages];
     }
-    return pageButtons;
+  };
+
+  const mangePageChange = (page: number | string) => {
+    console.log(page);
+    typeof page === 'number' && setCurrentPage(page);
   }
 
   return (
-    <div className="pagination-container">
-      {
-
-      }
-    </div>
+    <PagerStyled className="pagination-container">
+      {getDisplayedPages().map((page, index) => (
+        <Button
+          key={index}
+          classes={ `${page === currentPage ? "selected-page" :""} ${page !== "..." ? "pagination-button" : "pagination-button pagination-button-disabled"}` }
+          label={page.toString()}
+          active={page !== "..."}
+          onClick={() => mangePageChange(page)}
+        />
+      ))}
+    </PagerStyled>
   );
 };
 
