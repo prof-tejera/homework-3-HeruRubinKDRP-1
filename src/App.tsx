@@ -4,6 +4,7 @@ import LoginForm from "./OrganismComponents/LoginForm/LoginForm";
 import MediaButtons from "./components/Grapics/MediaButtons/MediaButtons";
 import RadioButtons from "./OrganismComponents/RadioButtons/RadioButtons";
 import Pager from "./OrganismComponents/Pager/Pager";
+import { AppOverview } from "./OrganismComponents/AppOverview/AppOverview";
 
 const App = () => {
   
@@ -13,7 +14,7 @@ const App = () => {
   
   return (
     <div>
-
+        <AppOverview />
     </div>
   );
 };
