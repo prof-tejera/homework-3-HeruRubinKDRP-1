@@ -1,7 +1,7 @@
-import { useState } from "react";
-import Panel from "components/Panel/Panel";
-import Button from "components/Button/Button";
-import "./MediaButtons.css";
+import React, { useState } from "react";
+
+import Panel from "../../Panel/Panel";
+import Button from "../../Button/Button";
 
 const MediaButtons = () => {
   const [activeType, setActiveType] = useState(null);
@@ -19,22 +19,22 @@ const MediaButtons = () => {
       <Button
         active={activeType === "rewind"}
         onClick={() => handleClick("rewind")}
-        text="Rewind"
+        label="Rewind"
       />
       <Button
         active={activeType === "fast-forward"}
         onClick={() => handleClick("fast-forward")}
-        text="Fast Forward"
+        label="Fast Forward"
       />
       <Button
         active={activeType === "play"}
         onClick={() => handleClick("play")}
-        text="Play"
+        label="Play"
       />
       <Button
         active={activeType === "stop"}
         onClick={() => handleClick("stop")}
-        text="Stop"
+        label="Stop"
       />
     </Panel>
   );
